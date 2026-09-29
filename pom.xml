@@ -17,6 +17,22 @@
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<!-- Jackson BOM to align all Jackson modules to safe version 2.18.10 -->
+			<!-- Fixes CVEs: 2019-12086, 2019-12384, 2019-12814, 2019-14379, 2019-14439, 2019-14540, 2019-16335, 2019-16942, 2019-16943, 2019-17267, 2019-17531, 2019-14892, 2019-14893, 2019-20330, 2020-8840, 2020-9546, 2020-9547, 2020-9548, 2020-10672, 2020-10673, 2020-10969, 2020-10968, 2020-11113, 2020-11112, 2020-11619, 2020-11620, 2020-11111, 2020-14062, 2020-14061, 2020-14060, 2020-14195, 2020-24616, 2020-24750, 2020-25649, 2020-35491, 2020-35728, 2020-35490, 2020-36187, 2020-36186, 2020-36184, 2020-36185, 2020-36182, 2020-36179, 2020-36189, 2020-36188, 2020-36183, 2020-36181, 2020-36180, 2021-20190, 2020-36518, 2020-10650, 2022-42004, 2022-42003, 2026-54514, 2026-77310, 2026-19032 -->
+			<!-- Transitive dependency from spring-boot-starter-parent and other dependencies -->
+			<!-- Remove when parent dependencies are upgraded to versions that include a safe transitive -->
+			<dependency>
+				<groupId>com.fasterxml.jackson</groupId>
+				<artifactId>jackson-bom</artifactId>
+				<version>2.18.10</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 
 	<dependencies>
 		<dependency>
@@ -33,7 +49,7 @@
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>42.2.5</version>
+			<version>42.7.11</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
