@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.2.RELEASE</version>
+		<version>2.7.17</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.scalesec</groupId>
@@ -17,6 +17,43 @@
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<!-- Pin tomcat-embed-core to safe version: Multiple CVEs (CVE-2019-0199 through CVE-2026-68525) -->
+			<!-- Parent spring-boot-starter-parent 2.1.2.RELEASE includes vulnerable version 9.0.14 -->
+			<!-- Remove when spring-boot-starter-parent is upgraded to a version that includes a safe transitive -->
+			<dependency>
+				<groupId>org.apache.tomcat.embed</groupId>
+				<artifactId>tomcat-embed-core</artifactId>
+				<version>9.0.122</version>
+			</dependency>
+			<!-- Pin logback-classic to safe version: CVE-2021-42550, CVE-2023-6378, CVE-2026-19880 -->
+			<!-- Parent spring-boot-starter-parent 2.7.17 includes vulnerable version 1.2.3 -->
+			<!-- Remove when spring-boot-starter-parent is upgraded to a version that includes a safe transitive -->
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>1.6.3</version>
+			</dependency>
+			<!-- Pin tomcat-embed-websocket to safe version: CVE-2020-13935, CVE-2024-23672 -->
+			<!-- Parent spring-boot-starter-parent 2.7.17 includes vulnerable version 9.0.14 -->
+			<!-- Remove when spring-boot-starter-parent is upgraded to a version that includes a safe transitive -->
+			<dependency>
+				<groupId>org.apache.tomcat.embed</groupId>
+				<artifactId>tomcat-embed-websocket</artifactId>
+				<version>9.0.96</version>
+			</dependency>
+			<!-- Pin hibernate-validator to safe version: CVE-2019-10219, CVE-2020-10693, CVE-2023-1932, CVE-2025-35036 -->
+			<!-- Parent spring-boot-starter-parent 2.7.17 includes vulnerable version 6.0.14.Final -->
+			<!-- Remove when spring-boot-starter-parent is upgraded to a version that includes a safe transitive -->
+			<dependency>
+				<groupId>org.hibernate.validator</groupId>
+				<artifactId>hibernate-validator</artifactId>
+				<version>6.2.5.Final</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 
 	<dependencies>
 		<dependency>
@@ -33,14 +70,14 @@
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>42.2.5</version>
+			<version>42.7.11</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
 		<dependency>
 		    <groupId>org.jsoup</groupId>
 		    <artifactId>jsoup</artifactId>
-		    <version>1.8.3</version>
+		    <version>1.23.2</version>
 		</dependency>
 
 		<dependency>
